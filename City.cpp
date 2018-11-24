@@ -4,18 +4,22 @@
 
 #include "City.hpp"
 
+
+
 City::City(int xCoord, int yCoord)
 {
-    if(xCoord > 1000 || yCoord > 1000)
-    {
-       x = 0;
-       y = 0;
-    }
-    else
-    {
-        x = xCoord;
-        y = yCoord;
-    }
-
+    x = xCoord;
+    y = yCoord;
     seqNum = cityCount++;
+}
+
+
+
+
+
+
+ostream& operator<<(std::ostream &os, const City& city)
+{
+    os << city.x << " " << city.y << " CityNum: " << city.seqNum << endl;
+    return os;
 }
