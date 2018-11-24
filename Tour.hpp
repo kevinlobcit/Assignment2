@@ -11,6 +11,7 @@
 #include <random>
 #include <ctime>
 #include <cstdlib>
+#include <chrono>
 
 class Tour {
 public:

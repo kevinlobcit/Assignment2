@@ -28,7 +28,8 @@ void createTours(int count, std::vector<Tour> &tourVect, std::vector<City> &city
     for(int i = 0; i < count; i++)
     {
         //cout << "hi";
-        //tourVect.push_back(Tour(cityVect));
+        tourVect.push_back(Tour(cityVect));
+        cout << "Tour" << i << " created" << endl;
     }
 }
 
@@ -51,10 +52,10 @@ int main() {
     generateCities(5, cityVect);
     printCities(cityVect);
 
-    Tour test = Tour(cityVect);
-    test.citySelector(cityVect);
+    //Tour test = Tour(cityVect);
+    //test.citySelector(cityVect);
 
-    //createTours(5, tourVect, cityVect);
+    createTours(5, tourVect, cityVect);
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
