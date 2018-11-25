@@ -7,13 +7,47 @@
 Tour::Tour(vector<City> vectCity)
 {
     citySelector(vectCity);
+    fitness = determine_fitness();
+    cout << fitness << endl;
 }
 
 
 
 
+double Tour::determine_fitness()
+{
+    double dist = get_tour_distance();
+    double fit = (1/dist) * 100000;
 
+    return fit;
+}
 
+double Tour::get_tour_distance()
+{
+    double dist = 0;
+    //calculates distance for 0, size-1
+    for(int i = 0; i < cityPath.size()-1; i++)
+    {
+        dist += get_distance_between_cities(cityPath.at(i), cityPath.at(i+1));
+    }
+
+    //calculates distance with end going back to start
+    dist += get_distance_between_cities(cityPath.at(0), cityPath.at(cityPath.size()-1));
+
+    return dist;
+}
+
+double Tour::get_distance_between_cities(City city1, City city2)
+{
+    double x1 = city1.x;
+    double y1 = city1.y;
+    double x2 = city2.x;
+    double y2 = city2.y;
+    double x = abs(x1 - x2);
+    double y = abs(y1 - y2);
+    double dist = sqrt(x*x+y*y);
+    return dist;
+}
 
 //Creates a random path based on the vector of cities given
 void Tour::citySelector(vector<City> vectCity)

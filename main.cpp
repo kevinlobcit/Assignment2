@@ -6,6 +6,20 @@
 #include <random>
 #include <ctime>
 
+#define CITIES_IN_TOUR 5
+#define POPULATION_SIZE 6
+#define SHUFFLES 64
+#define ITERATIONS 1000
+#define MAP_BOUNDARY 1000
+#define PARENT_POOL_SIZE 5
+#define MUTATION_RATE 15
+#define NUMBER_OF_PARENTS
+#define NUMBER_OF_ELITES 1
+
+
+
+
+
 //Makes vector of cities
 void generateCities(int count, std::vector<City> &cityVect)
 {
@@ -32,7 +46,6 @@ void createTours(int count, std::vector<Tour> &tourVect, std::vector<City> &city
         cout << "Tour" << i << " created" << endl;
     }
 }
-
 
 void printCities(std::vector<City> &cityVect)
 {

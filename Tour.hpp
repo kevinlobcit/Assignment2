@@ -16,13 +16,16 @@
 class Tour {
 public:
     vector<City> cityPath = vector<City>();
+    double fitness;
     Tour(vector<City> vectCity);
 
 
 
 
 
-
+    double determine_fitness();
+    double get_tour_distance();
+    double get_distance_between_cities(City city1, City city2);
 
     void citySelector(vector<City> vectCity);
 };
