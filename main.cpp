@@ -5,6 +5,7 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <algorithm>
 
 #define CITIES_IN_TOUR 5
 #define POPULATION_SIZE 6
@@ -55,6 +56,26 @@ void printCities(std::vector<City> &cityVect)
     }
 }
 
+void findElite(std::vector<Tour> &tourVect)
+{
+
+    int eliteIndex = 0;
+    cout << "hello";
+    //Find position of highest fitness tour
+    for(int i = 1; i < tourVect.size(); i++)
+    {
+        //cout << "hello";
+
+        if(tourVect.at(eliteIndex).fitness > tourVect.at(i).fitness )
+        {
+            eliteIndex = i;
+        }
+
+    }
+    iter_swap(tourVect.begin(), tourVect.begin() + eliteIndex);
+    cout << "highest fitness tour is " << eliteIndex << endl;
+    //printCities(tourVect.at(0).cityPath);
+}
 
 int City::cityCount = 0;
 
@@ -69,6 +90,8 @@ int main() {
     //test.citySelector(cityVect);
 
     createTours(5, tourVect, cityVect);
+
+    findElite(tourVect);
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
