@@ -8,7 +8,7 @@ Tour::Tour(vector<City> vectCity)
 {
     citySelector(vectCity);
     fitness = determine_fitness();
-    cout << fitness << endl;
+    //cout << fitness << endl;
 }
 
 
@@ -71,7 +71,7 @@ void Tour::citySelector(vector<City> vectCity)
         std::uniform_int_distribution<int> distribution(0,counter);
         distribution(generator); //Throw away the first because its always the same
         int rand = distribution(generator);
-        cout << rand  << " " << cityNum.at(rand)<< endl;
+        //cout << rand  << " " << cityNum.at(rand)<< endl;
         //put city number into the randCityNum vector and delete from cityNum
         int cityNumber = cityNum.at(rand);
         //cout << "adding " << cityNumber << endl;

@@ -1,6 +1,6 @@
 #include "TourManager.hpp"
 
-#define CITIES_IN_TOUR 5
+#define CITIES_IN_TOUR 50
 #define POPULATION_SIZE 6
 #define SHUFFLES 64
 #define ITERATIONS 1000
@@ -15,7 +15,8 @@ int main() {
     TourManager tManager = TourManager(CITIES_IN_TOUR
             , POPULATION_SIZE
             , ITERATIONS
-            , MUTATION_RATE);
+            , MUTATION_RATE
+            );
 
     std::cout << "Hello, World!" << std::endl;
     return 0;

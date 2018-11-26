@@ -16,11 +16,36 @@ TourManager::TourManager(int numCities,
     generateCities(numCities);
     createTours(numTours);
     findElite();
-    crosses();
-    mutate(chance);
+
+    for(int i = 0; i < iterations; i++)
+    {
+        cout << "Iteration " << i << endl;
+        crosses();
+        mutate(chance);
+        findElite();
+    }
+    printResults();
+
+
+
     //for(int i = 0; i< )
 }
 
+//prints the results of hte algorithm
+void TourManager::printResults()
+{
+    cout << "Given the cities:" << endl;
+    for(int i = 0; i < cityVect.size(); i++)
+    {
+        cout << "City No:" << i << " X:" << cityVect.at(i).x << " Y:" << cityVect.at(i).y << endl;
+    }
+    cout << endl;
+    for(int i = 0; i < tourVect.size(); i++)
+    {
+        cout << "Tour " << i << " - " << "Fitness: " << tourVect.at(i).fitness << endl;
+    }
+
+}
 
 //Makes vector of cities
 void TourManager::generateCities(int count)
@@ -43,7 +68,7 @@ void TourManager::createTours(int count)
     for(int i = 0; i < count; i++)
     {
         tourVect.push_back(Tour(cityVect));
-        cout << "Tour" << i << " created" << endl;
+        //cout << "Tour" << i << " created" << endl;
     }
 }
 
@@ -72,8 +97,8 @@ void TourManager::findElite()
 
     }
     iter_swap(tourVect.begin(), tourVect.begin() + eliteIndex);
-    cout << "highest fitness tour is " << eliteIndex << endl;
-    //printCities(tourVect.at(0).cityPath);
+    //cout << "highest fitness tour is " << eliteIndex << endl;
+    //printCities();
 }
 
 //Crosses all tours except the elite

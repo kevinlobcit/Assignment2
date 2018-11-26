@@ -17,11 +17,15 @@ class TourManager {
 public :
     std::vector<City> cityVect;
     std::vector<Tour> tourVect;
+    //int eliteIndex = 0;
 
     TourManager(int numCities,
             int numTours,
             int iterations,
             int chance);
+
+    //Prints the results of the algorithm
+    void printResults();
 
     //Makes vector of cities
     void generateCities(int count);
@@ -31,6 +35,8 @@ public :
 
     //Prints out the cities in the order of the path of a certain City vector
     void printCities();
+
+    void printTours();
 
     //Finds the elite within a tour
     void findElite();
