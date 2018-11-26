@@ -12,21 +12,11 @@
 
 
 int main() {
-    TourManager tManager = TourManager(CITIES_IN_TOUR, POPULATION_SIZE);
-    /*
-    std::vector<City> cityVect = std::vector<City>();
-    std::vector<Tour> tourVect = std::vector<Tour>();
+    TourManager tManager = TourManager(CITIES_IN_TOUR
+            , POPULATION_SIZE
+            , ITERATIONS
+            , MUTATION_RATE);
 
-    generateCities(5, cityVect);
-    printCities(cityVect);
-
-    //Tour test = Tour(cityVect);
-    //test.citySelector(cityVect);
-
-    createTours(5, tourVect, cityVect);
-
-    findElite(tourVect);
-    */
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }

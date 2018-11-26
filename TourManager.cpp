@@ -6,13 +6,19 @@
 
 int City::cityCount = 0;
 
-TourManager::TourManager(int numCities, int numTours)
+TourManager::TourManager(int numCities,
+        int numTours,
+        int iterations,
+        int chance)
 {
     cityVect = std::vector<City>();
     tourVect = std::vector<Tour>();
     generateCities(numCities);
     createTours(numTours);
     findElite();
+    crosses();
+    mutate(chance);
+    //for(int i = 0; i< )
 }
 
 
@@ -128,6 +134,43 @@ Tour TourManager::crossTours(Tour tour1, Tour tour2)
     Tour newTour = Tour(newPath);
 
     return newTour;
+}
+
+//Mutates all tours except elite
+void TourManager::mutate(int chance)
+{
+    for(int i = 1; i < tourVect.size(); i++)
+    {
+        mutateTour(tourVect.at(i), chance);
+    }
+}
+
+//Mutates a single tour
+void TourManager::mutateTour(Tour &tour, int chance)
+{
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
+    std::uniform_int_distribution<int> distribution(0,100);
+    distribution(generator);
+    int genNumber = distribution(generator);
+
+    //mutate if the generated number is below chance
+    if(genNumber < chance)
+    {
+        //mutate
+        std::uniform_int_distribution<int> distribution(1,tour.cityPath.size()-1);
+        distribution(generator);
+        int swapIndex1 = distribution(generator);
+        int swapIndex2 = swapIndex1+1;
+        if(swapIndex2 == tour.cityPath.size())
+        {
+            swapIndex1--;
+            swapIndex2--;
+        }
+        iter_swap(tour.cityPath.begin() + swapIndex1, tour.cityPath.begin()+ swapIndex2);
+        tour.determine_fitness();
+    }
+    //else do nothing
 }
 
 

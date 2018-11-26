@@ -18,7 +18,10 @@ public :
     std::vector<City> cityVect;
     std::vector<Tour> tourVect;
 
-    TourManager(int numCities, int numTours);
+    TourManager(int numCities,
+            int numTours,
+            int iterations,
+            int chance);
 
     //Makes vector of cities
     void generateCities(int count);
@@ -37,6 +40,10 @@ public :
 
     //Crosses two tours
     Tour crossTours(Tour tour1, Tour tour2);
+
+    void mutate(int chance);
+
+    void mutateTour(Tour &tour, int chance);
 
 };
 
