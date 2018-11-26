@@ -7,7 +7,6 @@
 
 #include "Tour.hpp"
 #include "City.hpp"
-#include "Tour.hpp"
 #include <vector>
 #include <random>
 #include <ctime>
@@ -22,16 +21,22 @@ public :
     TourManager(int numCities, int numTours);
 
     //Makes vector of cities
-    void generateCities(int count, std::vector<City> &cityVect);
+    void generateCities(int count);
 
     //Creates tours given a vector of cities
-    void createTours(int count, std::vector<Tour> &tourVect, std::vector<City> &cityVect);
+    void createTours(int count);
 
     //Prints out the cities in the order of the path of a certain City vector
-    void printCities(std::vector<City> &cityVect);
+    void printCities();
 
     //Finds the elite within a tour
-    void findElite(std::vector<Tour> &tourVect);
+    void findElite();
+
+    //Crosses the tours for the next iteration
+    void crosses();
+
+    //Crosses two tours
+    Tour crossTours(Tour tour1, Tour tour2);
 
 };
 

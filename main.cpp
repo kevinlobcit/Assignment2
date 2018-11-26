@@ -12,7 +12,7 @@
 
 
 int main() {
-    TourManager tManager = TourManager(5, 5);
+    TourManager tManager = TourManager(CITIES_IN_TOUR, POPULATION_SIZE);
     /*
     std::vector<City> cityVect = std::vector<City>();
     std::vector<Tour> tourVect = std::vector<Tour>();
